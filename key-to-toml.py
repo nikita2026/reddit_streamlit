@@ -1,6 +1,6 @@
 import toml
 
-output_file = "C:\Users\nikit\reddit_streamlit\secrets.toml"
+output_file = "./secrets.toml"
 
 with open("firestore-key.json") as json_file:
 	json_text = json_file.read()
