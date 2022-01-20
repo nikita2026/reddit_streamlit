@@ -24,7 +24,7 @@ if title and url and submit:
 #Render each post using some light markdown
 posts_ref = db.collection("posts")
 for doc in posts_ref.stream():
-	post = doc_to)dict()
+	post = doc_to_dict()
 	title = post["title"]
 	url = post["url"]
 
