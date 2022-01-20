@@ -26,3 +26,11 @@ doc_ref.set({
 	"title": "Apple",
 	"url": "www.apple.com"
 })
+
+#Make a reference to all the posts
+posts_ref = db.collection("posts")
+
+#Use .stream() for reference to a collection
+for doc in posts_ref.stream():
+	st.write("ID: ", doc.id)
+	st.write("Contents: ", doc.to_dict())
