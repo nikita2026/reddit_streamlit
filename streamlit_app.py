@@ -8,29 +8,25 @@ from google.cloud import firestore
 #Authenticate to Firestore with the JSON account key
 db = firestore.Client.from_service_account_json("firestore-key.json")
 
-#Create a reference to the Google post
-doc_ref = db.collection("posts").document("Google")
+#Streamlit widgets to let a user create a new post
+title = st.text_input("Post title")
+url = st.text_input("Post url")
+submit = st.button("Submit new post")
 
-#Get data at that reference
-doc = doc_ref.get()
+#Upload the submitted post to the database
+if title and url and submit:
+	doc_ref = db.collection("posts").document("title")
+	doc_ref.set({
+	    "title": title,
+	    "url": url
+	})
 
-#See the data obtained
-st.write("ID: ", doc.id)
-st.write("Contents: ", doc.to_dict()) 
-
-#Create a new post reference
-doc_ref = db.collection("posts").document("Apple")
-
-#Upload some data to that reference
-doc_ref.set({
-	"title": "Apple",
-	"url": "www.apple.com"
-})
-
-#Make a reference to all the posts
+#Render each post using some light markdown
 posts_ref = db.collection("posts")
-
-#Use .stream() for reference to a collection
 for doc in posts_ref.stream():
-	st.write("ID: ", doc.id)
-	st.write("Contents: ", doc.to_dict())
+	post = doc_to)dict()
+	title = post["title"]
+	url = post["url"]
+
+	st.subheader(f"Post: {title}")
+	st.write(f":link: [{url}]({url})")
