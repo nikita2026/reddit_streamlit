@@ -17,3 +17,12 @@ doc = doc_ref.get()
 #See the data obtained
 st.write("ID: ", doc.id)
 st.write("Contents: ", doc.to_dict()) 
+
+#Create a new post reference
+doc_ref = db.collection("posts").document("Apple")
+
+#Upload some data to that reference
+doc_ref.set({
+	"title": "Apple",
+	"url": "www.apple.com"
+})
